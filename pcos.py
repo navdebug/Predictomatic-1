@@ -242,6 +242,33 @@ from sklearn.metrics import classification_report
 print(classification_report(y_test, y_pred))
 
 
+roc_auc_score(y_test,y_pred_prob)
+from sklearn.model_selection import cross_val_score
+accuracies = cross_val_score(estimator = classifier_forest, X = X_train, y = y_train, cv = 10)
+print(accuracies.mean(), accuracies.std())
+from sklearn.model_selection import GridSearchCV
+parameters = {
+    'n_estimators': [25, 50, 200, 300],
+    'criterion': ['gini', 'entropy'],
+    'max_depth': [14, 20, 25, 30]
+}
+grid_search = GridSearchCV(estimator = classifier_forest,
+                          param_grid = parameters,
+                          scoring = 'accuracy',
+                          cv = 10,
+                          n_jobs = -1)
+grid_search = grid_search.fit(X_train, y_train)
+print('best_accuracy = ',grid_search.best_score_)
+print('best_parameters = ', grid_search.best_params_)
+classifier_forest = RandomForestClassifier(criterion = 'gini', max_depth = 25, n_estimators = 200, random_state = 0)
+classifier_forest.fit(X_train, y_train)
+y_pred = classifier_forest.predict(X_test)
+
+cm = confusion_matrix(y_test, y_pred)
+cm
+print(classification_report(y_test, y_pred))
+
+
 filename = 'PCOS.pkl' 
 pickle.dump(classifier_forest, open(filename, 'wb'))
 model = open('PCOS.pkl','rb')
