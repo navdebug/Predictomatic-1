@@ -1,1 +1,1 @@
-web: gunicorn app:app
+web: gunicorn pcos_app:app
