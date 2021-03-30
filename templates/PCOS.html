@@ -1,0 +1,84 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Ultra&display=swap" rel="stylesheet">
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- css -->
+    <link rel="stylesheet" href="static\PCOS.css">
+
+
+    <title>PCOS</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>PCOS</h1>
+    </header>
+
+    <br>
+
+    <div class="container">
+        <form action="/predict" method="POST">
+
+
+            <input type="text" name="Cycle length (days)" placeholder="Cycle length in days" required="required">
+            <br>
+            <input type="text" name="Marriage Status (Yrs)" placeholder="Marriage Status (Yrs)" required="required">
+            <br>
+            <input type="text" name="Pregnant(Y/N)" placeholder="Pregnant(Y/N)" required="required">
+            <br>
+            <input type="text" name="No of abortions" placeholder="No of abortions" required="required">
+            <br>
+            <input type="text" name="Weight(kg)" placeholder="Weight(kg)" required="required">
+            <br>
+            <input type="text" name="hair loss(Y/N)" placeholder="hair loss(Y/N)" required="required">
+            <br>
+            <input type="text" name="Pimples(Y/N)" placeholder="Pimples(Y/N)"
+                required="required">
+            <br>
+            <input type="text" name="Fast food(Y/N)" placeholder="Fast food(Y/N)" required="required">
+            <br>
+            <input type="text" name="Reg Exercise(Y/N)" placeholder="Red Exercise(Y/N)" required="required">
+            <br>
+            <button type="submit" class="btn btn-outline-warning">Predict</button>
+
+
+        </form>
+
+        <br>
+        <br>
+
+        <h3><strong>{{ prediction_text }}</strong></h3>
+
+        <br>
+        <br>
+
+        <p>ANANYA NAVYA BHAVANA</p>
+
+
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
