@@ -241,6 +241,38 @@ from sklearn.metrics import classification_report
 
 print(classification_report(y_test, y_pred))
 
+print_score(X_train, X_test, y_train, y_test)
+classifier_forest = RandomForestClassifier(criterion = 'entropy')
+classifier_forest.fit(X_train, y_train)
+y_pred = classifier_forest.predict(X_test)
+
+cm = confusion_matrix(y_test, y_pred)
+cm
+# classifier_svm = SVC(kernel = 'rbf', random_state = 0, probability=True)
+# classifier_svm.fit(X_train, y_train)
+# y_pred = classifier_svm.predict(X_test)
+
+# cm = confusion_matrix(y_test, y_pred)
+# cm
+pd.crosstab(y_test, y_pred, rownames=['True'], colnames=['Predicted'], margins=True)
+df['PCOS (Y/N)'].value_counts()
+from sklearn.metrics import roc_auc_score, roc_curve, classification_report
+print(classification_report(y_test, y_pred))
+y_pred_prob = classifier_forest.predict_proba(X_test)[:,1]
+y_pred_prob
+fpr, tpr, threshold = roc_curve(y_test, y_pred_prob)
+print("FPR:\n\n", fpr)
+
+
+print("-"*100)
+
+print("TPR:\n\n", tpr)
+plt.plot([0, 1], [0, 1], "k--", label = '50% AUC')
+plt.plot(fpr, tpr, label = "Random Forest")
+plt.xlabel("FPR")
+plt.ylabel("TPR")
+plt.title("ROC Curve - Random Forest")
+plt.show()
 
 roc_auc_score(y_test,y_pred_prob)
 from sklearn.model_selection import cross_val_score
